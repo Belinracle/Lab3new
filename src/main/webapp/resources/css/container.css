@@ -1,0 +1,29 @@
+.south{
+    margin-left: 10%;
+    margin-right: 10%;
+    flex: 0 0 auto;
+}
+.image{
+    width:  500px;
+    float: left;
+}
+.image:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+form{
+    min-width: 400px;
+    border-radius: 10px;
+    background: #C51D34;
+    padding-top: 5px;
+    margin-left: 550px;
+    margin-right: 0;
+    transition-property: background-color;
+    transition-duration: 2s;
+    color: antiquewhite;
+}
+.hit{
+    fill: #e20000;
+}
+.miss{
+    fill: darkolivegreen;
+}

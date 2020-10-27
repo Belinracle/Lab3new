@@ -1,0 +1,15 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+    <h:outputStylesheet library="css" name="invForm.css"/>
+    <h:form id="invForm" class="invisForm">
+        <p:inputText class="invX" value="#{oneRowBean.x}"/>
+        <p:inputText class="invY" value="#{oneRowBean.y}"/>
+        <p:inputText class="invR" value="#{oneRowBean.r}"/>
+        <h:commandButton class="invSendButt" >
+            <f:ajax event="click" listener="#{tableBean.addTableRow()}" render="table"/>
+        </h:commandButton>
+    </h:form>
+    <h:outputScript library="js" name="imageClickHandler.js"/>
+</ui:composition>

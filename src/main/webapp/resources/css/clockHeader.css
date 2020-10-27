@@ -1,0 +1,15 @@
+.header{
+    font-family: 'MyFont';
+    text-align: center;
+    font-size: 150%;
+    color: yellow;
+    flex-grow: 0;
+}
+.header span {
+    padding: 0 10px;
+    background: rgba(226, 29, 29,0.7);
+}
+@font-face{
+    font-family: 'MyFont';
+    src:url("/Lab3new/resources/fonts/Breathe/Breathe-Press.ttf");
+}

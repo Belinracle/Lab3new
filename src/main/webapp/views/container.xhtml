@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+    <h:outputStylesheet library="css" name="container.css"/>
+    <h:outputStylesheet library="css" name="form.css"/>
+    <h:outputStylesheet library="css" name="table.css"/>
+    <h:outputStylesheet library="css" name="invForm.css"/>
+    <div class="south">
+        <svg class="image" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#6ADCFB" d="M50 250 A180 180 0 0 0 250 450 L250 250"></path>
+            <rect fill="#6ADCFB" width="200" height="100" x="250" y="250"></rect>
+            <path fill="#6ADCFB" stroke="#6ADCFB" stroke-width="2" d="M250 150 L350 250 L250 250"></path>
+            <g id="coordLines">
+                <path fill="none" stroke="#000000" stroke-width="2" d="M0 250 H 500 M250 0 v500 M50 245 v10 M150 245 v10 M350 245 v10 M450 245 v10
+                      M245 50 h10 M245 150 h10 M245 350 h10 M245 450 h10
+                      M240 10 L250 0 L260 10
+                      M490 240 L500 250 L490 260"></path>
+            </g>
+            <g id="grafText">
+                <text x="45" y="240">-R</text>
+                <text x="140" y="240">-R/2</text>
+                <text x="340" y="240">R/2</text>
+                <text x="445" y="240">R</text>
+                <text x="257" y="55">R</text>
+                <text x="257" y="155">R/2</text>
+                <text x="257" y="353">-R/2</text>
+                <text x="257" y="453">-R</text>
+            </g>
+            <g class="pointPlace">
+                <circle style=""/>
+            </g>
+        </svg>
+
+        <div class="form">
+            <h:form id="form" class="my_form">
+                <p:outputLabel class="Xlabel" id="Xlabel" value="X value:#{oneRowBean.x}"/>
+
+                <h:inputHidden id="X" value="#{oneRowBean.x}"/>
+                <p:slider for="X" minValue="-2" maxValue="2" step="0.5">
+                    <f:convertNumber/>
+                    <p:ajax process="X" update="Xlabel"/>
+                </p:slider>
+
+                <h:outputLabel class="Ylabel" id="Y" value="Y value: #{oneRowBean.y}"/>
+                <p:inputText id="Yfield" value="#{oneRowBean.y}" required="true" maxlength="14">
+                    <f:validateDoubleRange maximum="3" minimum="-5"/>
+                    <f:convertNumber/>
+                    <p:ajax event="keyup" update="Y"/>
+                </p:inputText>
+                <h:message id="mesY" for="Yfield" style="color:white"/>
+
+                <h:outputLabel class="Rlabel" id="R" value="R value: #{oneRowBean.r}"/>
+                <div class="commandLinks">
+                    <h:commandLink value="1" action="#{oneRowBean.setR(1)}">
+                        <p:ajax update="R" oncomplete="setR(1)"/>
+                    </h:commandLink>
+
+                    <h:commandLink value="2" action="#{oneRowBean.setR(2)}">
+                        <p:ajax update="R" oncomplete="setR(2)"/>
+                    </h:commandLink>
+
+                    <h:commandLink value="3" action="#{oneRowBean.setR(3)}">
+                        <p:ajax update="R" oncomplete="setR(3)"/>
+                    </h:commandLink>
+
+                    <h:commandLink value="4" action="#{oneRowBean.setR(4)}">
+                        <p:ajax update="R" oncomplete="setR(4)"/>
+                    </h:commandLink>
+
+                    <h:commandLink value="5" action="#{oneRowBean.setR(5)}">
+                        <p:ajax update="R" oncomplete="setR(5)"/>
+                    </h:commandLink>
+                </div>
+
+                <h:commandButton class="send" value="Отправить">
+                    <p:ajax event="click" process="@form" listener="#{tableBean.addTableRow()}" update="form table" oncomplete="draw()"/>
+                </h:commandButton>
+            </h:form>
+        </div>
+    </div>
+    <h:form id="invForm" class="invisForm">
+        <p:inputText class="invX" value="#{oneRowBean.x}"/>
+        <p:inputText class="invY" value="#{oneRowBean.y}"/>
+        <p:inputText class="invR" value="#{oneRowBean.r}"/>
+        <h:commandButton class="invSendButt">
+            <p:ajax event="click" process="@form" listener="#{tableBean.addTableRow()}" update="form table" oncomplete="draw()"/>
+        </h:commandButton>
+    </h:form>
+    <div class="table">
+        <p:dataTable id="table" var="row" value="#{tableBean.rowsList}">
+            <p:column headerText="X">
+                <h:outputText value="#{row.x}" />
+            </p:column>
+
+            <p:column headerText="Y">
+                <h:outputText value="#{row.y}" />
+            </p:column>
+
+            <p:column headerText="R">
+                <h:outputText value="#{row.r}" />
+            </p:column>
+
+            <p:column headerText="Execution Time">
+                <h:outputText value="#{row.execTime}" />
+            </p:column>
+
+            <p:column headerText="Current Time">
+                <h:outputText value="#{row.currTime}" />
+            </p:column>
+
+            <p:column headerText="Result">
+                <h:outputText value="#{row.hit}" />
+            </p:column>
+        </p:dataTable>
+    </div>
+    <h:outputScript library="js" name="pointSetter.js"/>
+    <h:outputScript library="js" name="imageClickHandler.js"/>
+</ui:composition>
+

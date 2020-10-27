@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <h:outputStylesheet library="css" name="table.css"/>
+    <div class="table" id="table">
+        <p:dataTable var="row" value="#{tableBean.rowsList}">
+            <p:column headerText="X">
+                <h:outputText value="#{row.x}" />
+            </p:column>
+
+            <p:column headerText="Y">
+                <h:outputText value="#{row.y}" />
+            </p:column>
+
+            <p:column headerText="R">
+                <h:outputText value="#{row.r}" />
+            </p:column>
+
+            <p:column headerText="Execution Time">
+                <h:outputText value="#{row.execTime}" />
+            </p:column>
+            
+            <p:column headerText="Current Time">
+                <h:outputText value="#{row.currTime}" />
+            </p:column>
+            
+            <p:column headerText="Result">
+                <h:outputText value="#{row.hit}" />
+            </p:column>
+        </p:dataTable>
+    </div>
+</ui:composition>

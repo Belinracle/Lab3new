@@ -1,0 +1,19 @@
+.footer{
+    background-color: #379683;
+    font-family: 'footerFont';
+    width: 100%;
+    flex: 0 0 auto;
+}
+.linkBlock{
+    display: inline-block;
+    width: 100%;
+    color: black;
+    text-align: center;
+}
+.nothing{
+    flex: 1 0 auto;
+}
+@font-face{
+    font-family: 'footerFont';
+    src:url('/Lab3new/resources/fonts/Break/break-bold.ttf');
+}

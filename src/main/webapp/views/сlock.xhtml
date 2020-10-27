@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:outputStylesheet library="css" name="clock.css"/>
+    <h1>JavaScript Clock</h1>
+
+    <div id="clock">
+        <div id="time" class="glow"></div>
+        <div id="date">
+            <span class="month"/>
+            <span class="day"/>,
+            <span class="year"/>
+        </div>
+    </div>
+
+    <div class="container">
+        <ul id="days">
+            <li class="monday">Mon</li>
+            <li class="tuesday">Tue</li>
+            <li class="wednesday">Wed</li>
+            <li class="thursday">Thu</li>
+            <li class="friday">Fri</li>
+            <li class="saturday">Sat</li>
+            <li class="sunday">Sun</li>
+        </ul>
+    </div>
+    <h:outputScript library="js" name="clock.js" />
+</ui:composition>
